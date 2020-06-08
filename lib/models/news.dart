@@ -10,36 +10,37 @@ class ArticleModel extends Equatable {
   final String coverUrl;
   final String overview;
 
-  const ArticleModel({
-    @required this.id,
-    @required this.title,
-    @required this.author,
-    @required this.publishedAt,
-    @required this.publisher,
-    @required this.coverUrl,
-    @required this.overview
-  });
-
-  @override
-  List<Object> get props => [
-    id,
-    title,
-    author,
-    publishedAt,
-    publisher,
-    coverUrl,
-    overview
-  ];
+  const ArticleModel(
+      {@required this.id,
+      @required this.title,
+      @required this.author,
+      @required this.publishedAt,
+      @required this.publisher,
+      @required this.coverUrl,
+      @required this.overview});
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     return ArticleModel(
       id: json['id'],
       title: json['title'],
       author: json['author'],
-      publishedAt: json['published_at'] != null ? DateTime.parse(json['publishedAt']) : null,
+      publishedAt: json['published_at'] != null
+          ? DateTime.parse(json['publishedAt'])
+          : null,
       overview: json['overview'],
       publisher: json['publisher'],
       coverUrl: json['cover_url'],
     );
   }
+
+  @override
+  List<Object> get props => [
+        id,
+        title,
+        author,
+        publishedAt,
+        publisher,
+        coverUrl,
+        overview,
+      ];
 }
